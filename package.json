@@ -1,0 +1,12 @@
+{
+  "name": "bulma_vue_test",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "sardavend",
+  "license": "MIT",
+  "dependencies": {
+    "bulma": "^0.7.1",
+    "loadbar": "^0.2.2",
+    "noty": "^3.2.0-beta"
+  }
+}

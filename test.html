@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Web App lifecycle</title>
+    <style>
+        #first {color:green;}
+        #second {color:red;}
+        #head {
+            background-color:lightgray;
+            border-radius: 1em;
+        }
+    </style>
+</head>
+<body>
+    <div id="head">
+        <ul id="first"></ul>
+    </div>
+
+    <script>
+        window.onload = (() => {
+            let first = document.getElementById("first");
+            addMessage(first,"On Load");
+        });
+        function addMessage(element, message) {
+            let messageElement = document.createElement("li");
+            messageElement.textContent = message;
+            element.appendChild(messageElement);
+        }
+
+        let first = document.getElementById("first");
+        addMessage(first, "Page Loading");
+    </script>
+
+    <ul id="second"></ul>
+
+    <script>
+        function report(message) {
+            let first = document.getElementById("first");
+            addMessage(first, message);
+        }
+       document.body.addEventListener("mousemove", () => {
+            let second = document.getElementById("second");
+            addMessage(second, "Event: mousemove");
+        });
+
+        document.body.addEventListener("click", () => {
+            let second = document.getElementById("second");
+            addMessage(second, "Event: click");
+        });
+
+        let text = 'Domo arigatou';
+        report("defore defining functions");
+
+        function useless(ninjaCallback) {
+            report("In useless function");
+            return ninjaCallback();
+        }
+
+        function getText() {
+            report("In getText function");
+            return text;
+        }
+        report("before making all the calls")
+
+        assert(useless(getText) === text, "the useless function works!" + text);
+        report("After the calls have been made");
+    </script>
+    
+</body>
+</html>
